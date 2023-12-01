@@ -1,8 +1,8 @@
 import re
 
 
-def calculatePuzzle():
-    file = open('src/input.txt', 'r')
+def calculatePuzzle(filepath):
+    file = open(filepath, 'r')
     result = 0
 
     for line in file:
@@ -10,14 +10,10 @@ def calculatePuzzle():
         for c in line:
             if c.isdigit():
                 integers.append(c)
-        print(integers)
         number = int(f'{integers[0]}{integers[len(integers) - 1]}')
-        print(number)
         result += number
-
-    print(result)
-
     file.close()
+    return result
 
 
 validStrings = {
@@ -58,11 +54,7 @@ def calculatePuzzlePart2(filePath):
 
     for line in file:
         integers = searchStrings(line)
-        print('-------')
-        print(integers)
-        print(line)
         number = int(f'{integers[0]}{integers[len(integers) - 1]}')
-        print(number)
         result += number
     file.close()
     return result

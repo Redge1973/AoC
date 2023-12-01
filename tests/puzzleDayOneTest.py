@@ -1,9 +1,14 @@
 import unittest
 
-from src.PuzzleDayOne import calculatePuzzlePart2
+from src.PuzzleDayOne import calculatePuzzlePart2, calculatePuzzle
 
 
 class TestPuzzleDayOne(unittest.TestCase):
+
+    def test_puzzlePart1(self):
+        result = calculatePuzzle('testInputPuzzle1.txt')
+        self.assertEqual(result, 142)
+
 
     def test_puzzlePart2(self):
         result = calculatePuzzlePart2('testInput.txt')
