@@ -1,4 +1,4 @@
-from src.Day2.Puzzle import calculatePuzzle
+from src.Day2.Puzzle import findImpossibleGames, calculateMaxPowerOfCubes
 
 if __name__ == '__main__':
     # filepath = 'src/Day1/input2.txt'
@@ -8,5 +8,6 @@ if __name__ == '__main__':
     # print(result)
 
     filepath = 'src/Day2/input.txt'
-    print(calculatePuzzle(filepath))
+    print(findImpossibleGames(filepath))
+    print(calculateMaxPowerOfCubes(filepath))
 

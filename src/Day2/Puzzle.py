@@ -1,3 +1,6 @@
+from functools import reduce
+
+
 def parseFile(filepath):
     fileData = {}
 
@@ -17,7 +20,7 @@ def parseFile(filepath):
     return fileData
 
 
-def calculatePuzzle(filepath):
+def findImpossibleGames(filepath):
     result = 0
     maxCubesPerColor = {'red': 12, 'green': 13, 'blue': 14}
 
@@ -37,3 +40,19 @@ def calculatePuzzle(filepath):
             result += int(gameId)
 
     return result
+
+def calculateMaxPowerOfCubes(filepath):
+    fileData = parseFile(filepath)
+    maxPower = 0
+    for cubesList in fileData.values():
+        valuesList = sum(cubesList, [])
+        maxCubesPerColor = {'red': 0, 'green': 0, 'blue': 0}
+
+        for v in valuesList:
+            numberOfCubes = int(v[0])
+            color = v[1]
+            maxCubesPerColor[color] = max(maxCubesPerColor[color], numberOfCubes)
+
+        maxPower += reduce(lambda x, y: x * y, maxCubesPerColor.values())
+
+    return maxPower

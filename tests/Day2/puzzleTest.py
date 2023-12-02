@@ -1,6 +1,6 @@
 import unittest
 
-from src.Day2.Puzzle import calculatePuzzle, parseFile
+from src.Day2.Puzzle import findImpossibleGames, parseFile, calculateMaxPowerOfCubes
 
 
 class TestPuzzle(unittest.TestCase):
@@ -15,6 +15,12 @@ class TestPuzzle(unittest.TestCase):
              }
         self.assertEqual(result, expectedResult)
 
-    def test_puzzle(self):
-        result = calculatePuzzle('testInput.txt')
+    def test_findImpossibleGames(self):
+        result = findImpossibleGames('testInput.txt')
         self.assertEqual(result, 8)
+
+    def test_calculateMaxPowerOfCubes(self):
+        result = calculateMaxPowerOfCubes('testInput.txt')
+        self.assertEqual(result, 2286)
+
+
