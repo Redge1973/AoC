@@ -17,4 +17,4 @@ class TestPuzzle(unittest.TestCase):
 
     def test_puzzle(self):
         result = calculatePuzzle('testInput.txt')
-        self.assertEqual(result, 0)
+        self.assertEqual(result, 8)

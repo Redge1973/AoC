@@ -19,15 +19,21 @@ def parseFile(filepath):
 
 def calculatePuzzle(filepath):
     result = 0
-    red = 12
-    green = 13
-    blue = 14
+    maxCubesPerColor = {'red': 12, 'green': 13, 'blue': 14}
+
 
     fileData = parseFile(filepath)
 
-    for key, value in fileData.items():
-        print(key)
-        print(value)
-
+    for gameId, cubesList in fileData.items():
+        valuesList = sum(cubesList, [])
+        impossibleValueFound = False
+        for v in valuesList:
+            numberOfCubes = int(v[0])
+            color = v[1]
+            if numberOfCubes > maxCubesPerColor[color]:
+                impossibleValueFound = True
+                break
+        if not impossibleValueFound:
+            result += int(gameId)
 
     return result
