@@ -1,6 +1,6 @@
 import unittest
 
-from src.PuzzleDayOne import calculatePuzzlePart2, calculatePuzzle
+from src.Day1.PuzzleDayOne import calculatePuzzlePart2, calculatePuzzle
 
 
 class TestPuzzleDayOne(unittest.TestCase):
