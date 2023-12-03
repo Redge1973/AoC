@@ -1,7 +1,7 @@
 import unittest
 
 from src.Day3.Puzzle import parseFile, \
-    findNumbersThatAreAdjacentToSymbols
+    findNumbersThatAreAdjacentToSymbols, findNumbersThatAreAdjacentToSymbolsAndStars
 
 
 class TestPuzzle(unittest.TestCase):
@@ -25,6 +25,10 @@ class TestPuzzle(unittest.TestCase):
     def test_findNumbersThatAreAdjacentToSymbols3(self):
         result = findNumbersThatAreAdjacentToSymbols('testInput3.txt')
         self.assertEqual(result, 692)
+
+    def test_findNumbersThatAreAdjacentToSymbolsAndStars(self):
+        result = findNumbersThatAreAdjacentToSymbolsAndStars('testInput.txt')
+        self.assertEqual(result, 467835)
 
 
 
