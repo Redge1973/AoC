@@ -15,7 +15,7 @@ def parseFile(filepath):
     return fileData
 
 
-specialCharsWithoutDot = string.punctuation.replace('.', '')
+specialcurrentCharsWithoutDot = string.punctuation.replace('.', '')
 
 
 def findNumbersThatAreAdjacentToSymbols(filepath):
@@ -23,70 +23,69 @@ def findNumbersThatAreAdjacentToSymbols(filepath):
 
     numbers = []
 
-    for listIndex, charList in enumerate(fileData):
+    for lineIndex, line in enumerate(fileData):
         digits = []
-        specialCharFound = False
+        specialcurrentCharFound = False
 
-        print(f'Zeile {listIndex}:-------------------------------------------------')
 
-        for charIndex, char in enumerate(charList):
+        for currentCharIndex, currentChar in enumerate(line):
 
-            if not char.isdigit():
+            if not currentChar.isdigit():
                 continue
-            digits.append(char)
+            digits.append(currentChar)
 
-            # check above
-            if listIndex > 0:
-                if fileData[listIndex - 1][charIndex] in specialCharsWithoutDot:
-                    specialCharFound = True
+            specialcurrentCharFound = searchForSpecialcurrentCharactersInNeighbourhood(currentCharIndex, line, fileData, lineIndex,
+                                                                         specialcurrentCharFound)
 
-            # check below
-            if listIndex < len(fileData)-1:
-                if fileData[listIndex + 1][charIndex] in specialCharsWithoutDot:
-                    specialCharFound = True
-
-            if charIndex > 0:
-                # check above number and left
-                if listIndex > 0:
-                    if fileData[listIndex - 1][charIndex - 1] in specialCharsWithoutDot:
-                        specialCharFound = True
-                # check left from number
-                if charList[charIndex - 1] in specialCharsWithoutDot:
-                    specialCharFound = True
-
-                #check left and lower
-                if listIndex < len(fileData) -1:
-                    if fileData[listIndex + 1][charIndex - 1] in specialCharsWithoutDot:
-                        specialCharFound = True
-
-
-
-            if charIndex < len(charList)-1:
-                # check above and right
-                if listIndex > 0:
-                    if fileData[listIndex - 1][charIndex + 1] in specialCharsWithoutDot:
-                        specialCharFound = True
-
-                # check right from number
-                if charList[charIndex + 1] in specialCharsWithoutDot:
-                    specialCharFound = True
-
-                # check right and lower
-                if listIndex < len(fileData) - 1:
-                    if fileData[listIndex + 1][charIndex + 1] in specialCharsWithoutDot:
-                        specialCharFound = True
-
-            nextChar = charList[charIndex+1] if charIndex < len(charList)-1 else None
-            if not nextChar or not nextChar.isdigit():
-                if specialCharFound and digits:
+            nextcurrentChar = line[currentCharIndex+1] if currentCharIndex < len(line)-1 else None
+            if not nextcurrentChar or not nextcurrentChar.isdigit():
+                if specialcurrentCharFound and digits:
                     number = int(''.join(d for d in digits))
-                    print(number)
                     numbers.append(number)
 
                 digits = []
-                specialCharFound = False
+                specialcurrentCharFound = False
 
 
     return sum(numbers, 0)
+
+
+def searchForSpecialcurrentCharactersInNeighbourhood(currentCharIndex, line, fileData, lineIndex, specialcurrentCharFound):
+    # check above
+    if lineIndex > 0:
+        if fileData[lineIndex - 1][currentCharIndex] in specialcurrentCharsWithoutDot:
+            specialcurrentCharFound = True
+    # check below
+    if lineIndex < len(fileData) - 1:
+        if fileData[lineIndex + 1][currentCharIndex] in specialcurrentCharsWithoutDot:
+            specialcurrentCharFound = True
+    if currentCharIndex > 0:
+        # check above number and left
+        if lineIndex > 0:
+            if fileData[lineIndex - 1][currentCharIndex - 1] in specialcurrentCharsWithoutDot:
+                specialcurrentCharFound = True
+        # check left from number
+        if line[currentCharIndex - 1] in specialcurrentCharsWithoutDot:
+            specialcurrentCharFound = True
+
+        # check left and lower
+        if lineIndex < len(fileData) - 1:
+            if fileData[lineIndex + 1][currentCharIndex - 1] in specialcurrentCharsWithoutDot:
+                specialcurrentCharFound = True
+    if currentCharIndex < len(line) - 1:
+        # check above and right
+        if lineIndex > 0:
+            if fileData[lineIndex - 1][currentCharIndex + 1] in specialcurrentCharsWithoutDot:
+                specialcurrentCharFound = True
+
+        # check right from number
+        if line[currentCharIndex + 1] in specialcurrentCharsWithoutDot:
+            specialcurrentCharFound = True
+
+        # check right and lower
+        if lineIndex < len(fileData) - 1:
+            if fileData[lineIndex + 1][currentCharIndex + 1] in specialcurrentCharsWithoutDot:
+                specialcurrentCharFound = True
+    return specialcurrentCharFound
 
 
