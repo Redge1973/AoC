@@ -62,8 +62,8 @@ def findNumbersThatAreAdjacentToSymbols(filepath):
             specialCharFound = searchForSpecialcurrentCharactersInNeighbourhood(currentCharIndex, line, fileData, lineIndex,
                                                                          specialCharFound, Stars())
 
-            nextcurrentChar = line[currentCharIndex+1] if currentCharIndex < len(line)-1 else None
-            if not nextcurrentChar or not nextcurrentChar.isdigit():
+            nextChar = line[currentCharIndex+1] if currentCharIndex < len(line)-1 else None
+            if not nextChar or not nextChar.isdigit():
                 if specialCharFound and digits:
                     number = int(''.join(d for d in digits))
                     numbers.append(number)
@@ -93,8 +93,8 @@ def findNumbersThatAreAdjacentToSymbolsAndStars(filepath):
             specialCharFound = searchForSpecialcurrentCharactersInNeighbourhood(currentCharIndex, line, fileData, lineIndex,
                                                                          specialCharFound, starsFound)
 
-            nextcurrentChar = line[currentCharIndex+1] if currentCharIndex < len(line)-1 else None
-            if not nextcurrentChar or not nextcurrentChar.isdigit():
+            nextChar = line[currentCharIndex+1] if currentCharIndex < len(line)-1 else None
+            if not nextChar or not nextChar.isdigit():
                 if specialCharFound and digits:
                     number = int(''.join(d for d in digits))
                     numbers.append({'number': number, 'stars': starsFound if starsFound.stars else None})
