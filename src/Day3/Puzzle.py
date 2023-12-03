@@ -119,7 +119,6 @@ def findNumbersWithSameStars(numbersWithStars):
 
     starWithNumbers = {}
 
-
     for n in numbersWithStars:
         number = n['number']
         for s in n['stars'].stars:
