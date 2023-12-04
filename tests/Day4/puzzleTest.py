@@ -1,6 +1,6 @@
 import unittest
 
-from src.Day4.Puzzle import parseFile, calculatePoints
+from src.Day4.Puzzle import parseFile, calculatePoints, calculateNumberOfCards
 
 
 class TestPuzzle(unittest.TestCase):
@@ -17,3 +17,12 @@ class TestPuzzle(unittest.TestCase):
     def test_calculatePointsInputProd(self):
         result = calculatePoints('../../src/Day4/input.txt')
         self.assertEqual(result, 25571)
+
+    def test_calculateNumberOfCards(self):
+        result = calculateNumberOfCards('testInput.txt')
+        self.assertEqual(result, 30)
+
+    def test_calculateNumberOfCardsProd(self):
+        result = calculateNumberOfCards('../../src/Day4/input.txt')
+        self.assertEqual(result, 8805731)
+
