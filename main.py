@@ -1,5 +1,6 @@
 from src.Day2.Puzzle import findImpossibleGames, calculateMaxPowerOfCubes
 from src.Day3.Puzzle import findNumbersThatAreAdjacentToSymbols, findNumbersThatAreAdjacentToSymbolsAndStars
+from src.Day4.Puzzle import calculatePoints
 
 if __name__ == '__main__':
     # filepath = 'src/Day1/input2.txt'
@@ -12,7 +13,10 @@ if __name__ == '__main__':
     # print(findImpossibleGames(filepath))
     # print(calculateMaxPowerOfCubes(filepath))
 
-    filepath = 'src/Day3/input.txt'
-    print(findNumbersThatAreAdjacentToSymbols(filepath))
-    print(findNumbersThatAreAdjacentToSymbolsAndStars(filepath))
+    # filepath = 'src/Day3/input.txt'
+    # print(findNumbersThatAreAdjacentToSymbols(filepath))
+    # print(findNumbersThatAreAdjacentToSymbolsAndStars(filepath))
+
+    filepath = 'src/Day4/input.txt'
+    print(calculatePoints(filepath))
 
